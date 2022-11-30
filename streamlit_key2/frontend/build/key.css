@@ -1,0 +1,36 @@
+.parent {
+    background-color: #edebeb;
+    width: 100%;
+}
+textarea {
+    width: 100%; 
+    box-sizing: border-box;  /* ※これがないと横にはみ出る */
+    height:120px; 
+    font-size: large;
+    outline: none;           /* ※ブラウザが標準で付加する線を消したいとき */
+    resize: none;
+}
+.box16{
+    background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+    background: repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#e9f4ff 3px, #e9f4ff 7px);
+}
+.box18{
+    color: #565656;
+    background: #fcf4d6;
+    border: dashed 2px #f9ce31;
+}
+.box24 {
+    position: relative;
+    padding: 0.5em 0.7em;
+    margin: 2em 0;
+    background: #6f4b3e;
+    color: white;
+    font-weight: bold;
+}
+.button02 {
+    width: 300px;
+    color: #333;
+    font-weight: 700;
+    background-color: #cccccc;
+    border-radius: 50vh;
+}
