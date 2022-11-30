@@ -1,6 +1,8 @@
 import streamlit as st
 from streamlit_key2 import my_component
 import json
+import pickle
+from kakou import *
 
 
 #アンケート
@@ -25,13 +27,16 @@ with open('keylog.jsonl', 'a') as f:
 
 #入力データ作成
 idx1 = value.find(" ")
-data = value[idx1+1:]#Eisu 414 p 299 r 115 i 169 n 126 t
-print(data)
+inputs = value[idx1+1:]#Eisu 414 p 299 r 115 i 169 n 126 t
+averaging_data = input_kakou(WV_FILE, inputs)
+averaging_data = averaging_data.reshape(1, -1)
+
 
 #予測
-
-
-pred = 1 #結果
+filename = '221130_takky_random.sav'
+loaded_model = pickle.load(open(filename, 'rb'))
+result = loaded_model.predict(averaging_data)
 
 
 #結果を表示
+st.write(result) 
