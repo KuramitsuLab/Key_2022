@@ -26,22 +26,17 @@ with open('keylog.jsonl', 'a') as f:
 
 
 #入力データ作成
-#TODO
+#inputs = 's 239 SPACE 167 i 180 n 238 SPACE 172 Shift 1144 "" 244 a 248 b 385 c 214 d 397 e 313 f 251 g 153 Shift 238 "" 213 Shift'
 str_list = value.split()
 inputs = " ".join(str_list[2:])
-st.markdown("inputs")
-st.markdown(inputs)
-#577 p 166 r 229 i 164 n 153 t
-#'s 239 SPACE 167 i 180 n 238 SPACE 172 Shift 1144 "" 244 a 248 b 385 c 214 d 397 e 313 f 251 g 153 Shift 238 "" 213 Shift'
-averaging_data = input_kakou(WV_FILE, inputs).reshape(1, -1)
-print(averaging_data)
+if inputs == "":
+    pass
+else:
+    averaging_data = input_kakou(WV_FILE, inputs).reshape(1, -1)
 
-
-#予測
-filename = '221130_takky_random.sav'
-loaded_model = pickle.load(open(filename, 'rb'))
-result = loaded_model.predict(averaging_data)
-
-
-#結果を表示
-st.write(result) 
+    #予測
+    filename = '221130_takky_random.sav'
+    loaded_model = pickle.load(open(filename, 'rb'))
+    result = loaded_model.predict(averaging_data)
+    #結果を表示
+    st.write(result) 
