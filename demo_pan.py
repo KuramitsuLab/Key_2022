@@ -26,10 +26,15 @@ with open('keylog.jsonl', 'a') as f:
 
 
 #入力データ作成
-idx1 = value.find(" ")
-inputs = value[idx1+1:]#Eisu 414 p 299 r 115 i 169 n 126 t
-averaging_data = input_kakou(WV_FILE, inputs)
-averaging_data = averaging_data.reshape(1, -1)
+#TODO
+str_list = value.split()
+inputs = " ".join(str_list[2:])
+st.markdown("inputs")
+st.markdown(inputs)
+#577 p 166 r 229 i 164 n 153 t
+#'s 239 SPACE 167 i 180 n 238 SPACE 172 Shift 1144 "" 244 a 248 b 385 c 214 d 397 e 313 f 251 g 153 Shift 238 "" 213 Shift'
+averaging_data = input_kakou(WV_FILE, inputs).reshape(1, -1)
+print(averaging_data)
 
 
 #予測
