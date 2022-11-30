@@ -33,12 +33,5 @@ print(data)
 
 pred = 1 #結果
 
+
 #結果を表示
-if pred == 0:
-    st.write("頑張りましょう！")
-elif pred == 1:
-    st.write("よくできました")
-elif pred == 2:
-    st.write("大変よくできました")
-elif pred == 3:
-    st.write("素晴らしい")
