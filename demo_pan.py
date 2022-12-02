@@ -4,44 +4,43 @@ import json
 import pickle
 from kakou import *
 
+#キーターピングレベル診断
+def typing_level(ss):
+    #入力データ作成
+    WV_FILE = 'key_word2vec.bin'
+    ss_list = ss.split()
+    inputs = " ".join(ss_list[2:])
+    inputs = input_kakou(WV_FILE, inputs).reshape(1, -1)
+
+    #予測
+    modelname = '221130_takky_random.sav'
+    loaded_model = pickle.load(open(modelname, 'rb'))
+    result = loaded_model.predict(inputs)[0]
+    
+    return result
+
 
 #アンケート
 year = st.radio(label = "あなたのプログラミング経験について当てはまるものをお選びください。", 
     options = ('経験なし', '歴1年ほど', '歴2~3年ほど','歴3年以上or業務で扱っている'))
 
 
-#キーデータ収集
-value = my_component()
-st.markdown(f"You've typed {value}")
+#キータイピングデータ取得
+data = my_component()
 
+if data == "":
+    pass
+else:
+    #キータイピングデータの表示
+    st.markdown(f"You've typed {data}")
 
-#ログをjsnol形式へ
-with open('keylog.jsonl', 'a') as f:
-    if value == "":
-        pass
-    else:
-        dict = {'year':year, 'value':value}#{"year":"経験なし","value":"15114 p 160 r 71 i 136 n 154 t"}
-        json.dump(dict, f, separators=(',',':'),ensure_ascii=False)
+    #ログデータ回収
+    with open('keylog.jsonl', 'a') as f:
+        dataset = {'year':year, 'data':data}#{"year":"経験なし","value":"5742 p 166 r 101 i 149 n 132 t"}
+        json.dump(dataset, f, separators=(',',':'),ensure_ascii=False)
         f.write('\n')
-
-
-#入力データ作成
-#TODO
-str_list = value.split()
-inputs = " ".join(str_list[2:])
-st.markdown("inputs")
-st.markdown(inputs)
-#577 p 166 r 229 i 164 n 153 t
-#'s 239 SPACE 167 i 180 n 238 SPACE 172 Shift 1144 "" 244 a 248 b 385 c 214 d 397 e 313 f 251 g 153 Shift 238 "" 213 Shift'
-averaging_data = input_kakou(WV_FILE, inputs).reshape(1, -1)
-print(averaging_data)
-
-
-#予測
-filename = '221130_takky_random.sav'
-loaded_model = pickle.load(open(filename, 'rb'))
-result = loaded_model.predict(averaging_data)
-
-
-#結果を表示
-st.write(result) 
+    
+    #キーターピングレベルの表示
+    result = typing_level(data)#0
+    st.write(result)
+    
