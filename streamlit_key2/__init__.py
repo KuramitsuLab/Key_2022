@@ -44,6 +44,7 @@ else:
 # our component's API: we can pre-process its input args, post-process its
 # output value, and add a docstring for users.
 
+#5行だと入りきらない
 TEXT='''\
 print(math.sin(math.pi/2))
 print(["oranges", "tables"])
@@ -51,6 +52,19 @@ print(weight / (height * height))
 print(x if x >= y else y)
 print(s[0].upper() for s in "abcdefg")
 '''
+#（提案）お手本コード
+# import math
+# print(math.sin(math.pi/2))
+# print(["oranges", "tables"])
+# print(x if x >= y else y)
+# print(s[0].upper() for s in "abcdefg")
+
+#今までのお手本コード
+# print(math.sin(math.pi/2))
+# print(["oranges", "tables"])
+# print(weight / (height * height))
+# print(x if x >= y else y)
+# print(s[0].upper() for s in "abcdefg")
 
 def my_component(name=TEXT, key=None):
     """Create a new instance of "my_component".

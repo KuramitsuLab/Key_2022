@@ -5,7 +5,7 @@
 textarea {
     width: 100%; 
     box-sizing: border-box;  /* ※これがないと横にはみ出る */
-    height:120px; 
+    height:150px; 
     font-size: large;
     outline: none;           /* ※ブラウザが標準で付加する線を消したいとき */
     resize: none;
