@@ -30,7 +30,9 @@ def typing_level(ss):
 year = st.radio(label = "あなたのプログラミング経験について当てはまるものをお選びください", 
     options = ("経験なし", "半年~2年ほど", "3年以上or業務で扱っている"))
 
-st.markdown('<p style="padding: 30px 0 15px 0; text-align:center;">右側の水色枠内に、左側のお手本と同じコードをタイプしてください！<br>すべてのコードをタイプし終えたら、完了ボタンを押してください。</p>', unsafe_allow_html=True)
+# st.markdown('<div style="margin:20px; border-top: solid 4px gray;"><p style="padding: 40px 0 10px 0; text-align:center;">右側の水色枠内に、左側のお手本と同じコードをタイプしてください！<br>すべてのコードをタイプし終えたら、完了ボタンを押してください。</p></div>', unsafe_allow_html=True)
+
+st.markdown('<p style="padding: 40px 0 10px 0; text-align:center; margin:20px; border-top: solid 4px gray;">右側の水色枠内に、左側のお手本と同じコードをタイプしてください！<br>すべてのコードをタイプし終えたら、完了ボタンを押してください。</p>', unsafe_allow_html=True)
 
 
 #キータイピングデータ取得
@@ -52,26 +54,32 @@ else:
     
     #キーターピングレベルの表示
     result = typing_level(data)
-    print(result)
-    image_1 = Image.open('results_1.png')
-    st.image(image_1,width = 500)
+    # print(result)
+    # image_1 = Image.open('results_2.png')
+    # <p><img src="sample.jpg" alt="サンプル画像"></p>
+    # st.markdown('<p><img src="results_2.png" alt="サンプル画像"></p>', unsafe_allow_html=True)
+    # st.image(image_1)
 
-    # if result == 0:
-    #     image_1 = Image.open('results_1.png')
-    #     st.image(image_1)
-    #     st.write("ご協力いただきありがとうございます！")
-    # elif result == 1:
-    #     image_2 = Image.open('results_2.png')
-    #     st.image(image_2)
-    #     st.write("ご協力いただきありがとうございます！")
-    # elif result == 2:
-    #     image_3 = Image.open('results_3.png')
-    #     st.image(image_3)
-    #     st.write("ご協力いただきありがとうございます！")
-    # else:
-    #     image_4 = Image.open('results_4.png')
-    #     st.image(image_4)
-    #     st.write("ご協力いただきありがとうございます！")
+    if result == 0:
+        image_1 = Image.open('results_1.png')
+        st.image(image_1)
+        st.markdown('<p style="padding: 10px 0 10px 0; text-align:center;">ご協力いただきありがとうございます！</p>', unsafe_allow_html=True)
+
+    elif result == 1:
+        image_2 = Image.open('results_2.png')
+        st.image(image_2)
+        st.markdown('<p style="padding: 10px 0 10px 0; text-align:center;">ご協力いただきありがとうございます！</p>', unsafe_allow_html=True)
+
+    elif result == 2:
+        image_3 = Image.open('results_3.png')
+        st.image(image_3)
+        st.markdown('<p style="padding: 10px 0 10px 0; text-align:center;">ご協力いただきありがとうございます！</p>', unsafe_allow_html=True)
+
+    else:
+        image_4 = Image.open('results_4.png')
+        st.image(image_4)
+        st.markdown('<p style="padding: 10px 0 10px 0; text-align:center;">ご協力いただきありがとうございます！</p>', unsafe_allow_html=True)
+
 
 
 
