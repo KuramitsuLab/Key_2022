@@ -37,8 +37,9 @@ st.markdown('<p style="padding: 40px 0 10px 0; text-align:center; margin:20px; b
 
 #キータイピングデータ取得
 data = my_component()
-labels = {"経験なし":0,"歴1~2年ほど":1,"歴3年以上or業務で扱っている":2}
+labels = {"経験なし":0,"半年~2年ほど":1,"3年以上or業務で扱っている":2}
 date = str(datetime.now().date())
+datetime = str(datetime.now())
 
 if data == "":
     pass
@@ -47,8 +48,8 @@ else:
     # st.markdown('<h1>Hello</h1>', unsafe_allow_html=True)
 
     #ログデータ回収
-    with open('keylog.jsonl', 'a') as f:
-        dataset = {'label':labels[str(year)], 'data':data,'date':date}#{"year":"経験なし","value":"5742 p 166 r 101 i 149 n 132 t"}
+    with open('keylog_test.jsonl', 'a') as f:
+        dataset = {'label':labels[str(year)], 'data':data,'date':date,'datetime':datetime}#{"year":"経験なし","value":"5742 p 166 r 101 i 149 n 132 t"}
         json.dump(dataset, f, separators=(',',':'),ensure_ascii=False)
         f.write('\n')
     

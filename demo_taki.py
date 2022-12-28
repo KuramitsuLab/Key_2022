@@ -39,6 +39,7 @@ st.markdown('<p style="padding: 40px 0 10px 0; text-align:center; margin:20px; b
 data = my_component()
 labels = {"経験なし":0,"歴1~2年ほど":1,"歴3年以上or業務で扱っている":2}
 date = str(datetime.now().date())
+date_time = str(datetime.now())
 
 if data == "":
     pass
@@ -48,7 +49,7 @@ else:
 
     #ログデータ回収
     with open('keylog.jsonl', 'a') as f:
-        dataset = {'label':labels[str(year)], 'data':data,'date':date}#{"year":"経験なし","value":"5742 p 166 r 101 i 149 n 132 t"}
+        dataset = {'label':labels[str(year)], 'data':data,'date':date,'datetime':date_time}#{"year":"経験なし","value":"5742 p 166 r 101 i 149 n 132 t"}
         json.dump(dataset, f, separators=(',',':'),ensure_ascii=False)
         f.write('\n')
     
